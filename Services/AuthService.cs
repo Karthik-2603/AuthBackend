@@ -15,6 +15,7 @@ namespace AuthBackend.Services
     {
         private readonly AppDbContext _db = new();
 
+        // Register the user
         public async Task<bool> RegisterAsync(string username, string password)
         {
             if (await _db.Users.AnyAsync(u => u.Username == username))
@@ -26,6 +27,7 @@ namespace AuthBackend.Services
             return true;
         }
 
+        // Fetch the user and verify the password
         public async Task<User?> AuthenticateAsync(string username, string password)
         {
             var user = await _db.Users.FirstOrDefaultAsync(u => u.Username == username);

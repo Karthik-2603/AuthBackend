@@ -10,26 +10,11 @@ export class AuthService {
 
   constructor(private http: HttpClient) { }
 
-  // signUp(data: { username: string; password: string;email:string;confirmpassword:string }) {
-  //   return this.http.post(`${this.apiUrl}/signup`, data).pipe(
-  //     catchError(this.handleError)
-  //   );
-  // }
-  // signUp(data: { username: string; password: string; email: string; confirmpassword: string }) {
-  //   return this.http.post<any>(
-  //     `${this.apiUrl}/signup`,
-  //     data,
-  //     { observe: 'response' } // important: this includes status, headers, etc.
-  //   ).pipe(
-  //     catchError(this.handleError)
-  //   );
-  // }
-
   signUp(data: { username: string; password: string; email: string; confirmpassword: string }) {
   return this.http.post<any>(
     `${this.apiUrl}/signup`,
     data,
-    { observe: 'response' }  // allows access to status code
+    { observe: 'response' }
   ).pipe(
     catchError((error: HttpErrorResponse) => {
       // Let the component handle the error message
@@ -38,22 +23,11 @@ export class AuthService {
   );
  }
 
-  // signIn(data: { username: string, password: string }) {
-  //   return this.http.post<{ status: string; data: { token: string } }>(`${this.apiUrl}/signin`, data).pipe(
-  //     tap(response => {
-  //       if (response.status === 'ok') {
-  //         localStorage.setItem('auth_token', response.data.token);
-  //       }
-  //     }),
-  //     catchError(this.handleError)
-  //   );
-  // }
-
   signIn(data: { username: string; password: string }) {
   return this.http.post<any>(
     `${this.apiUrl}/signin`,
     data,
-    { observe: 'response' }  // access full HTTP response with status and headers
+    { observe: 'response' }
   ).pipe(
     tap(response => {
       // If successful, store token

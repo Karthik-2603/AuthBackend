@@ -21,7 +21,6 @@ namespace AuthBackend.Controllers
             var request = context.Request;
             var response = context.Response;
 
-            // ✅ CORS Preflight
             if (request.HttpMethod == "OPTIONS")
             {
                 AddCorsHeaders(response);
@@ -30,7 +29,7 @@ namespace AuthBackend.Controllers
                 return;
             }
 
-            // ✅ Add CORS to normal requests
+            // requests
             AddCorsHeaders(response);
 
             string result;
@@ -68,6 +67,7 @@ namespace AuthBackend.Controllers
             response.Close();
         }
 
+        // Adding headers
         private void AddCorsHeaders(HttpListenerResponse response)
         {
             response.AddHeader("Access-Control-Allow-Origin", "*");

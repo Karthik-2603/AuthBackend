@@ -13,6 +13,7 @@ namespace AuthBackend.Services
     {
         private readonly byte[] _secret = Encoding.UTF8.GetBytes("YouShouldSecureKeyWithVeryGoodPassswordIKnowYouknowbutstillitoldyou");
 
+        // Generation of JWT token
         public string GenerateToken(string username)
         {
             var credentials = new SigningCredentials(new SymmetricSecurityKey(_secret), SecurityAlgorithms.HmacSha256);

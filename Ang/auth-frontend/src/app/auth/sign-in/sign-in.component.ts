@@ -8,19 +8,17 @@ import { InputTextModule } from 'primeng/inputtext';
 import { PasswordModule } from 'primeng/password';
 import { CardModule } from 'primeng/card';
 import { ToastModule } from 'primeng/toast';
-import { MessageService } from 'primeng/api'
+import { MessageService } from 'primeng/api';
+import { RouterModule } from '@angular/router';
 
 @Component({
   selector: 'app-sign-in',
   templateUrl: './sign-in.component.html',
   styleUrl: './sign-in.component.css',
-  imports: [FormsModule,CommonModule,InputTextModule, PasswordModule, ButtonModule,CardModule,ToastModule], 
+  imports: [FormsModule,CommonModule,InputTextModule, PasswordModule, ButtonModule,CardModule,ToastModule,RouterModule,], 
   standalone: true
 })
 export class SignInComponent {
-  // username = '';
-  // password = '';
-  // error = '';
 
   constructor(private auth: AuthService, private router: Router,private messageService: MessageService) {}
 
@@ -28,31 +26,6 @@ export class SignInComponent {
   password = '';
   error = '';
 
-  //   onSubmit(form: NgForm) {
-  //     if (form.valid) {
-  //       // Call your auth service here with username and password
-  //       this.auth.signIn({ username: this.username, password: this.password }).subscribe({
-  //         next: (response) => {
-  //         const status = response.body.status;
-
-  //         if (status === 200 || status === 201) {
-  //           this.messageService.add({
-  //             severity: 'success',
-  //             summary: 'Success',
-  //             detail: 'User logged in Successfully'
-  //           });
-  //           setTimeout(() => this.router.navigate(['/dashboard']), 1000);
-  //         } else {
-  //           this.messageService.add({
-  //             severity: 'error',
-  //             summary: 'Registration Failed',
-  //             detail: response.body?.error || 'Unexpected error occurred.'
-  //           });
-  //         }
-  //       },
-  //     }
-  //   }
-  // }
       onSubmit(form: NgForm) {
       if (form.valid) {
         this.auth.signIn({ username: this.username, password: this.password }).subscribe({
