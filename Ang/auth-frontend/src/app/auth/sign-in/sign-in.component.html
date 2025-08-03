@@ -1,0 +1,25 @@
+<p-toast></p-toast>
+<div class="signin-container">
+  <p-card class="signin-card">
+    <h2>Sign In</h2>
+    <form (ngSubmit)="onSubmit(form)" #form="ngForm">
+      <div class="form-group">
+        <label for="username">Username</label>
+        <input pInputText id="username" name="username" [(ngModel)]="username" #usernameInput="ngModel" required autocomplete="off"/>
+        <small *ngIf="usernameInput.invalid && usernameInput.touched" class="p-error">Username is required.</small>
+      </div>
+
+      <div class="form-group">
+        <label for="password">Password</label>
+        <input pPassword id="password" name="password" type="password" pInputText [(ngModel)]="password" autocomplete="off" required [feedback]="false" #passwordInput="ngModel" />
+        <small *ngIf="passwordInput.errors?.['required'] && passwordInput.touched" class="p-error">Password is required.</small>
+      </div>
+
+      <p-button label="Sign In" type="submit" [disabled]="!!form.invalid" styleClass="w-full"></p-button>
+    </form>
+
+    <div class="footer">
+      <p>Don't have an account? <a routerLink="/sign-up">Sign Up</a></p>
+    </div>
+  </p-card>
+</div>

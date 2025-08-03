@@ -1,0 +1,32 @@
+.landing-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background: radial-gradient(circle at top left, #fdfbfb, #ebedee);
+}
+
+.landing-card {
+  padding: 2rem;
+  text-align: center;
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.1);
+  border-radius: 12px;
+  background: white;
+  text-align: center;
+}
+
+.auth-links {
+  margin-top: 1rem;
+  font-size: 1.1rem;
+}
+
+.auth-links a {
+  color: #673ab7;
+  text-decoration: underline;
+  margin: 0 0.5rem;
+  
+}
+
+.card-size {
+  padding: 0rem 80px;
+}

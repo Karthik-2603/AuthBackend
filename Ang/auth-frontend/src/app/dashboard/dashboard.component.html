@@ -1,0 +1,21 @@
+<div class="dashboard-container">
+  <div class="dashboard-header">
+    <h1>Welcome to your Dashboard !!</h1>
+    <button pButton type="button" label="Logout" (click)="logout()" class="p-button-danger"></button>
+  </div>
+
+  <div class="dashboard-grid">
+    <p-card header="Profile" subheader="Your Info">
+      <ng-template pTemplate="content">
+        <p><strong>Username:</strong> {{username}}</p>
+      </ng-template>
+    </p-card>
+
+    <p-card header="Dummy Stats" subheader="Quick View">
+      <ng-template pTemplate="content">
+        <p>Posts: <strong>42</strong></p>
+        <p>Followers: <strong>1,200</strong></p>
+      </ng-template>
+    </p-card>
+  </div>
+</div>

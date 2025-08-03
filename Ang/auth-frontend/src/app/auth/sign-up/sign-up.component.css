@@ -1,0 +1,21 @@
+.signup-form {
+  max-width: 400px;
+  margin: 2rem auto;
+  padding: 2rem;
+  background: white;
+  border-radius: 10px;
+  box-shadow: 0 0 15px rgba(0,0,0,0.1);
+}
+
+h2 {
+  margin-bottom: 1.5rem;
+  text-align: center;
+}
+
+.p-field {
+  margin-bottom: 1.2rem;
+}
+
+.p-fluid .p-button {
+    width: 100px;
+}

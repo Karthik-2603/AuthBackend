@@ -1,0 +1,87 @@
+<!-- <h2>Sign Up</h2>
+<div *ngIf="error" style="color: red;">{{ error }}</div>
+<input [(ngModel)]="username" placeholder="Username" /><br />
+<input [(ngModel)]="password" type="password" placeholder="Password" /><br />
+<button (click)="signUp()">Register</button> -->
+<p-toast></p-toast>
+<form (ngSubmit)="onSubmit(signUpForm)" #signUpForm="ngForm" class="p-fluid signup-form" novalidate>
+  
+  <h2>Sign Up</h2>
+
+  <div class="p-field">
+    <label for="username">Username</label>
+    <input
+      id="username"
+      name="username"
+      type="text"
+      pInputText
+      [(ngModel)]="username"
+      required
+      #usernameInput="ngModel"
+      autocomplete="off"
+    />
+    <small *ngIf="usernameInput.invalid && usernameInput.touched" class="p-error">Username is required.</small>
+  </div>
+
+  <div class="p-field">
+    <label for="email">Email</label>
+    <input
+      id="email"
+      name="email"
+      type="email"
+      pInputText
+      [(ngModel)]="email"
+      required
+      email
+      #emailInput="ngModel"
+      autocomplete="off"
+    />
+    <small *ngIf="emailInput.errors?.['required'] && emailInput.touched" class="p-error">Email is required.</small>
+    <small *ngIf="emailInput.errors?.['email'] && emailInput.touched" class="p-error">Email is invalid.</small>
+  </div>
+
+  <div class="p-field">
+    <label for="password">Password</label>
+    <input
+      id="password"
+      name="password"
+      type="password"
+      pInputText
+      [(ngModel)]="password"
+      required
+      minlength="6"
+      #passwordInput="ngModel"
+      autocomplete="off"
+    />
+    <small *ngIf="passwordInput.errors?.['required'] && passwordInput.touched" class="p-error">Password is required.</small>
+    <small *ngIf="passwordInput.errors?.['minlength'] && passwordInput.touched" class="p-error">
+      Password must be at least 6 characters.
+    </small>
+  </div>
+
+  <div class="p-field">
+    <label for="confirmPassword">Confirm Password</label>
+    <input
+      id="confirmPassword"
+      name="confirmPassword"
+      type="password"
+      pInputText
+      [(ngModel)]="confirmPassword"
+      required
+      #confirmPasswordInput="ngModel"
+      autocomplete="off"
+    />
+    <small *ngIf="confirmPasswordInput.invalid && confirmPasswordInput.touched" class="p-error">Confirm password is required.</small>
+    <small
+      *ngIf="confirmPassword !== password && confirmPasswordInput.touched"
+      class="p-error"
+    >
+      Passwords do not match.
+    </small>
+  </div>
+
+  <button pButton type="submit"
+    [disabled]="signUpForm.invalid || password !== confirmPassword"
+    class="w-full .p-fluid .p-button">Sign Up</button>
+
+</form>
